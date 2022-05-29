@@ -31,7 +31,28 @@ Typewriter.prototype.type=function(){
      ${this.txt}
    </span>`
 
-    setTimeout(()=>this.type(),500)
+    // type speed
+    let typeSpeed=300
+
+    if(this.isDeleting){
+        typeSpeed/=2
+    }
+
+    // check if word is complete
+    if(!this.isDeleting && this.txt===fullTxt){
+        typeSpeed=this.wait
+
+        this.isDeleting=true
+    }else if(this.isDeleting && this.txt===''){
+        this.isDeleting=false
+
+        // move to the next word
+
+        this.wordIndex++
+
+        typeSpeed=500
+    }
+    setTimeout(()=>this.type(),typeSpeed)
     
 }
 
@@ -48,3 +69,4 @@ function init(){
     new Typewriter(element,more,wait)
 
 }
+

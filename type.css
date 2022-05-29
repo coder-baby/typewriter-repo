@@ -37,6 +37,9 @@ h2{
     font-size: 2rem;
     color: #fcf5f5;
 }
+.txt{
+    border-right: 0.2rem solid white;
+}
 
 @media screen and (min-width:1200px){
     h1{
